@@ -1,20 +1,52 @@
-# Rock-Paper-and-Scissors-Game
-
-## Overview
-The Rock Paper Scissors game is a classic hand game between two players. This project is a simple Python implementation of the game using Object-Oriented Programming (OOP) concepts. The game allows a user to play against the computer, where the computer randomly selects a choice (rock, paper, or scissors), and the user inputs their choice. The game determines the winner based on standard rules.
+# Rock, Paper, Scissors Game
+## Description
+This is a simple console-based Rock, Paper, Scissors game implemented in C++. The game allows the player to compete against a computer opponent. The player can choose between Rock, Paper, or Scissors, and the computer's choice is made randomly. The game continues until the player decides to exit. The scores for both the player and the opponent are tracked and displayed at the end.
 
 ## Features
-##### Player vs Computer: The user plays against the computer, which randomly selects one of the three options.
-##### Multiple Rounds: Play as many rounds as you like and keep track of the score.
-##### Object-Oriented Design: The game is structured using classes and objects for better modularity and code management.
+- Play Rock, Paper, Scissors against a computer opponent.
+- Track and display scores for both player and opponent.
+- Input validation to ensure only valid choices are accepted.
+- Option to exit the game at any time by typing 'exit'.
 
-## Game Rules
-##### Rock beats Scissors
-##### Scissors beats Paper
-##### Paper beats Rock
+## Requirements
+- C++ Compiler (e.g., g++, clang++)
+- Standard C++ Library
 
-## How It Works
-##### Game Setup: The game starts by asking the user for their choice between rock, paper, or scissors.
-##### Computer's Turn: The computer randomly selects its choice.
-##### Winner Determination: The game compares the player's and computer's choices and announces the winner based on the rules.
-##### Play Again: After each round, the player is prompted to play again or exit.
+## Compilation
+To compile the code, use a C++ compiler. For example, with `g++`, you can run:
+
+```console
+g++ -o rps_game Code.cpp
+```
+
+This will produce an executable file named `rps_game`.
+
+## Usage
+Run the compiled program:
+```console
+./rps_game
+```
+
+Follow the prompts to enter your choice:
+
+1. Enter one of "Rock", "Paper", or "Scissors".
+2. The computer will randomly select its choice.
+3. The result of each round will be displayed, and the scores will be updated.
+4. Type 'exit' to quit the game at any time.
+
+## Example
+
+```console
+User@Github:~$ ./rps_game 
+Enter Rock, Paper or Scissors (or type 'exit' to quit): Rock
+Opponent chooses Paper
+Opponent wins this round!
+Player Score: 0 | Opponent Score: 1
+Enter Rock, Paper or Scissors (or type 'exit' to quit): Paper
+Opponent chooses Rock
+Player wins this round!
+Player Score: 1 | Opponent Score: 1
+Enter Rock, Paper or Scissors (or type 'exit' to quit): exit
+Final Scores - Player: 1 | Opponent: 1
+It's a TIE!
+```

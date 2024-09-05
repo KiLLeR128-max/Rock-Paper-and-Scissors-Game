@@ -1,49 +1,70 @@
-#include<iostream>
-#include<string>
-#include<ctime>
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+
 using namespace std;
 
-int main(){
+int main() {
     string player;
     string opponent;
-    int playerScore;
-    int opponentScore;
-    string rps[]={"Rock","Paper","Scissor"};
+    int playerScore = 0; 
+    int opponentScore = 0;
+    string rps[] = {"Rock", "Paper", "Scissors"}; // Fixed "Scissor" to "Scissors"
 
-    srand((unsigned int)time(NULL));
+    srand(static_cast<unsigned int>(time(nullptr))); // Corrected srand usage
 
-    while(true){
-        cout << "Enter Rock,Paper or Scissors : ";
-        getline(cin,player);
-        if (player !="Rock" && player!="Paper" && player!="Scissor"){
+    while (true) {
+        cout << "Enter Rock, Paper or Scissors (or type 'exit' to quit): ";
+        getline(cin, player);
+        
+        // Allow the user to exit the game
+        if (player == "exit") {
             break;
         }
-        opponent=rps[rand() % 3];
-        cout<<"Opponent chooses"<<opponent<<endl;
 
-        if (player == opponent){
+        bool validInput = false;
+        for (const string& choice : rps) {
+            if (player == choice) {
+                validInput = true;
+                break;
+            }
+        }
+
+        if (!validInput) {
+            cout << "Invalid input. Please enter Rock, Paper, or Scissors." << endl;
+            continue;
+        }
+
+        // Randomly select the opponent's choice
+        opponent = rps[rand() % 3];
+        cout << "Opponent chooses " << opponent << endl;
+
+        // Determine the winner
+        if (player == opponent) {
+            cout << "It's a tie!" << endl;
+        } else if ((player == "Rock" && opponent == "Scissors") ||
+                   (player == "Paper" && opponent == "Rock") ||
+                   (player == "Scissors" && opponent == "Paper")) {
             playerScore++;
+            cout << "Player wins this round!" << endl;
+        } else {
             opponentScore++;
-            }
-            else if(player=="Rock"){
-                if(opponent=="Scissor") playerScore++;
-                else if(opponent=="Paper") opponentScore++;
-            
-            }
-            else if(player =="Paper"){
-                if(opponent=="Rock")playerScore++;
-                else if(opponent =="Scissors")opponentScore++;
-            }
-            else if(player=="Scissor"){
-                if(opponent=="Paper")playerScore++;
-                else if(opponent=="Rock")opponentScore++;
-                }
-                cout<<"Player Score :" <<playerScore << "opponent: "<< opponentScore<<endl;
-    
-    }
-    cout<<"Player Score :" <<playerScore << "opponent: "<< opponentScore<<endl;
-    if (playerScore>opponentScore)cout<<"Player WON"<<endl;
-    else if (opponentScore>playerScore)cout<<"Opponent WON"<<endl;
-    else cout<<"It's a TIE"<<endl;
+            cout << "Opponent wins this round!" << endl;
+        }
 
+        cout << "Player Score: " << playerScore << " | Opponent Score: " << opponentScore << endl;
+    }
+
+    // Display final results
+    cout << "Final Scores - Player: " << playerScore << " | Opponent: " << opponentScore << endl;
+    if (playerScore > opponentScore) {
+        cout << "Player WON!" << endl;
+    } else if (opponentScore > playerScore) {
+        cout << "Opponent WON!" << endl;
+    } else {
+        cout << "It's a TIE!" << endl;
+    }
+
+    return 0;
 }
